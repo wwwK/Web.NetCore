@@ -1,0 +1,300 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Web.NetCore.Model</name>
+    </assembly>
+    <members>
+        <member name="T:Web.NetCore.Model.MessageModel`1">
+            <summary>
+            通用返回信息类
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.MessageModel`1.Success">
+            <summary>
+            操作是否成功
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.MessageModel`1.Msg">
+            <summary>
+            返回信息
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.MessageModel`1.Data">
+            <summary>
+            返回数据集合
+            </summary>
+        </member>
+        <member name="T:Web.NetCore.Model.Models.CalendarRecord">
+            <summary>
+            日程记录
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.CalendarRecord.RECORD_ID">
+            <summary>
+            日程id
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.CalendarRecord.RECORD_DATE">
+            <summary>
+            日期
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.CalendarRecord.RECORD_MATTER">
+            <summary>
+            待办事项
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.CalendarRecord.RECORD_ADDRESS">
+            <summary>
+            目的地
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.CalendarRecord.RECORD_START_DATE">
+            <summary>
+            起始日期
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.CalendarRecord.RECORD_END_DATE">
+            <summary>
+            结束日期
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.CalendarRecord.RECORD_IS_LOOP">
+            <summary>
+            循环日程
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.CalendarRecord.RECORD_CYCLE">
+            <summary>
+            循环周期
+            </summary>
+        </member>
+        <member name="T:Web.NetCore.Model.Models.ManagerRichInfo">
+            <summary>
+            理财助手
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.ManagerRichInfo.RICH_ID1">
+            <summary>
+            理财id
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.ManagerRichInfo.RICH_DATE">
+            <summary>
+            日期
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.ManagerRichInfo.RICH_GOLD_PRICE">
+            <summary>
+            黄金价格
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.ManagerRichInfo.RICH_RISE">
+            <summary>
+            相较涨幅
+            </summary>
+        </member>
+        <member name="T:Web.NetCore.Model.Models.PeriodsRecord">
+            <summary>
+            生理期记录
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.PeriodsRecord.PERIODS_ID">
+            <summary>
+            生理期ID
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.PeriodsRecord.PERIODS_USER_ID">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.PeriodsRecord.RERIODS_START_TIME">
+            <summary>
+            生理期开始时间
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.PeriodsRecord.RERIODS_END_TIME">
+            <summary>
+            生理期结束时间
+            </summary>
+        </member>
+        <member name="T:Web.NetCore.Model.Models.TodoRecord">
+            <summary>
+            待办事项
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.TodoRecord.TODO_ID">
+            <summary>
+            待办id
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.TodoRecord.TODO_ITEM">
+            <summary>
+            待办事项
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.TodoRecord.TODO_START_DATE">
+            <summary>
+            起始日期
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.TodoRecord.TODO_END_DATE">
+            <summary>
+            结束日期
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.TodoRecord.TODO_DATE">
+            <summary>
+            日期
+            </summary>
+        </member>
+        <member name="T:Web.NetCore.Model.Models.UserCalendarRecord">
+            <summary>
+            用户日程
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.UserCalendarRecord.UCR_RECORD_ID">
+            <summary>
+            日程id
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.UserCalendarRecord.UCR_USER_ID1">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.UserCalendarRecord.UCR_ID">
+            <summary>
+            用户日程id
+            </summary>
+        </member>
+        <member name="T:Web.NetCore.Model.Models.UserInfo">
+            <summary>
+            用户表
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.UserInfo.USER_ID">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.UserInfo.USER_NAME">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.UserInfo.USER_LOGIN_NAME">
+            <summary>
+            用户登录名
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.UserInfo.USER_EN_NAME">
+            <summary>
+            用户英文名
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.UserInfo.USER_PASSWORD">
+            <summary>
+            用户密码
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.UserInfo.USER_QQ">
+            <summary>
+            用户QQ
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.UserInfo.USER_WECHAT">
+            <summary>
+            用户微信
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Model.Models.UserInfo.USER_SEX">
+            <summary>
+            用户性别
+            </summary>
+        </member>
+        <member name="M:Web.NetCore.Model.UtilConvert.ObjToInt(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="thisValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.NetCore.Model.UtilConvert.ObjToInt(System.Object,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="thisValue"></param>
+            <param name="errorValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.NetCore.Model.UtilConvert.ObjToMoney(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="thisValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.NetCore.Model.UtilConvert.ObjToMoney(System.Object,System.Double)">
+            <summary>
+            
+            </summary>
+            <param name="thisValue"></param>
+            <param name="errorValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.NetCore.Model.UtilConvert.ObjToString(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="thisValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.NetCore.Model.UtilConvert.ObjToString(System.Object,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="thisValue"></param>
+            <param name="errorValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.NetCore.Model.UtilConvert.ObjToDecimal(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="thisValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.NetCore.Model.UtilConvert.ObjToDecimal(System.Object,System.Decimal)">
+            <summary>
+            
+            </summary>
+            <param name="thisValue"></param>
+            <param name="errorValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.NetCore.Model.UtilConvert.ObjToDate(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="thisValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.NetCore.Model.UtilConvert.ObjToDate(System.Object,System.DateTime)">
+            <summary>
+            
+            </summary>
+            <param name="thisValue"></param>
+            <param name="errorValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.NetCore.Model.UtilConvert.ObjToBool(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="thisValue"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

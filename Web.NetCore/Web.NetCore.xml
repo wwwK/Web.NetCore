@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Web.NetCore</name>
+    </assembly>
+    <members>
+        <member name="M:Web.NetCore.Controllers.LoginController.#ctor(Web.NetCore.IService.IUserInfoServices)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="userInfoServices"></param>
+        </member>
+        <member name="M:Web.NetCore.Controllers.LoginController.GetJwtStr(System.String,System.String)">
+            <summary>
+            登录认证，获取Token
+            </summary>
+            <param name="name">用户名</param>
+            <param name="pass">密码</param>
+            <returns></returns>
+        </member>
+        <member name="T:Web.NetCore.Controllers.RegisterController">
+            <summary>
+            注册
+            </summary>
+        </member>
+        <member name="M:Web.NetCore.Controllers.RegisterController.Register(Web.NetCore.Model.Models.UserInfo)">
+            <summary>
+            注册
+            </summary>
+            <param name="userInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Web.NetCore.Controllers.ValuesController">
+            <summary>
+            api/ValuesController
+            </summary>
+        </member>
+        <member name="M:Web.NetCore.Controllers.ValuesController.Get(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="i"></param>
+            <param name="j"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.NetCore.Controllers.ValuesController.Put(System.Int32,System.String)">
+            <summary>
+            PUT api/values/5
+            </summary>
+            <param name="id"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Web.NetCore.Controllers.ValuesController.Delete(System.Int32)">
+            <summary>
+            DELETE api/values/5
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:Web.NetCore.Helper.JwtHelper.IssueJwt(Web.NetCore.Helper.TokenModelJwt)">
+            <summary>
+            颁发JWT字符串
+            </summary>
+            <param name="tokenModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web.NetCore.Helper.JwtHelper.SerializeJwt(System.String)">
+            <summary>
+            解析
+            </summary>
+            <param name="jwtStr"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Web.NetCore.Helper.TokenModelJwt">
+            <summary>
+            令牌
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Helper.TokenModelJwt.Uid">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Helper.TokenModelJwt.Role">
+            <summary>
+            角色
+            </summary>
+        </member>
+        <member name="P:Web.NetCore.Helper.TokenModelJwt.Work">
+            <summary>
+            职能
+            </summary>
+        </member>
+    </members>
+</doc>
