@@ -4,13 +4,12 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Web.NetCore.IRepository.Base;
 using Web.NetCore.IService.Base;
-using Web.NetCore.Repository.Base;
 
 namespace Web.NetCore.Service.Base
 {
     public class BaseServices<TEntity> : IBaseServices<TEntity> where TEntity : class, new()
     {
-        public IBaseRepository<TEntity> baseDal = new BaseRepository<TEntity>();
+        public IBaseRepository<TEntity> baseDal;
 
         public async Task<TEntity> QueryByID(object objId)
         {

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Web.NetCore.Helper;
 using Web.NetCore.IService;
-using Web.NetCore.Service;
 
 namespace Web.NetCore.Controllers
 {

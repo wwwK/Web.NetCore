@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
@@ -19,8 +20,6 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
 using Web.NetCore.IService;
-using Web.NetCore.Repository;
-using Web.NetCore.Service;
 
 namespace Web.NetCore
 {
@@ -47,12 +46,12 @@ namespace Web.NetCore
                     Title = "Web.NetCore API",
                     Description = "框架说明文档",
                     TermsOfService = "None",
-                    Contact = new Swashbuckle.AspNetCore.Swagger.Contact { Name = "Web.NetCore", Email = "Blog.Core@xxx.com", Url = "https://www.jianshu.com/u/94102b59cc2a" }
+                    Contact = new Swashbuckle.AspNetCore.Swagger.Contact { Name = "Web.NetCore"}
                 });
 
-                var basePath = Microsoft.DotNet.PlatformAbstractions.ApplicationEnvironment.ApplicationBasePath;
-                var xmlPath = Path.Combine(basePath, "Web.NetCore.xml");//这个就是刚刚配置的xml文件名
-                var xmlModelPath = Path.Combine(basePath, "Web.NetCore.Model.xml");//这个就是刚刚配置Model的xml文件名
+                var BasePath = Microsoft.DotNet.PlatformAbstractions.ApplicationEnvironment.ApplicationBasePath;
+                var xmlPath = Path.Combine(BasePath, "Web.NetCore.xml");//这个就是刚刚配置的xml文件名
+                var xmlModelPath = Path.Combine(BasePath, "Web.NetCore.Model.xml");//这个就是刚刚配置Model的xml文件名
                 c.IncludeXmlComments(xmlPath, true);//默认的第二个参数是false，这个是controller的注释，记得修改
                 c.IncludeXmlComments(xmlModelPath, true);
 
@@ -73,8 +72,6 @@ namespace Web.NetCore
 
 
             #endregion
-
-            DBLink.ConnectionString = Configuration.GetSection("AppSettings:SqlServerConnection").Value;
 
             var audienceConfig = Configuration.GetSection("Audience");
             var symmetricKeyAsBase64 = audienceConfig["Secret"];
@@ -120,7 +117,16 @@ namespace Web.NetCore
 
             //注册要通过反射创建的组件
             //builder.RegisterType<AdvertisementServices>().As<IAdvertisementServices>();
-            builder.RegisterType<UserInfoServices>().As<IUserInfoServices>();
+            //builder.RegisterType<UserInfoServices>().As<IUserInfoServices>();
+
+            var basePath = Microsoft.DotNet.PlatformAbstractions.ApplicationEnvironment.ApplicationBasePath;//获取项目路径
+            var servicesDllFile = Path.Combine(basePath, "Web.NetCore.Service.dll");//获取注入项目绝对路径
+            var assemblysServices = Assembly.LoadFile(servicesDllFile);//直接采用加载文件的方法
+            var repositoryDllFile = Path.Combine(basePath, "Web.NetCore.Repository.dll");//获取注入项目绝对路径
+            var assemblysRepository = Assembly.LoadFile(repositoryDllFile);//直接采用加载文件的方法
+
+            builder.RegisterAssemblyTypes(assemblysServices).AsImplementedInterfaces();//指定已扫描程序集中的类型注册为提供所有其实现的接口。
+            builder.RegisterAssemblyTypes(assemblysRepository).AsImplementedInterfaces();//指定已扫描程序集中的类型注册为提供所有其实现的接口。
 
             //将services填充到Autofac容器生成器中
             builder.Populate(services);
