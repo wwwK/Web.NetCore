@@ -4,6 +4,12 @@
         <name>Web.NetCore</name>
     </assembly>
     <members>
+        <member name="M:Web.NetCore.AOP.LogAOP.Intercept(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            实例化IInterceptor唯一方法 
+            </summary>
+            <param name="invocation">包含被拦截方法的信息</param>
+        </member>
         <member name="M:Web.NetCore.Controllers.LoginController.#ctor(Web.NetCore.IService.IUserInfoServices)">
             <summary>
             构造函数

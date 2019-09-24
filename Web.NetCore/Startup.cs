@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Autofac.Extras.DynamicProxy;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
-using Web.NetCore.IService;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using System.Text;
+using Web.NetCore.AOP;
+using Web.NetCore.Commons.MemoryCache;
 
 namespace Web.NetCore
 {
@@ -36,6 +33,10 @@ namespace Web.NetCore
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            //缓存注入
+            services.AddScoped<ICaching, MemoryCaching>();
+
 
             #region Swagger
             services.AddSwaggerGen(c =>
@@ -115,17 +116,23 @@ namespace Web.NetCore
             //实例化 AutoFac  容器   
             var builder = new ContainerBuilder();
 
-            //注册要通过反射创建的组件
-            //builder.RegisterType<AdvertisementServices>().As<IAdvertisementServices>();
-            //builder.RegisterType<UserInfoServices>().As<IUserInfoServices>();
+            var aop = new List<Type>();
+            aop.Add(typeof(LogAOP));
+            aop.Add(typeof(CacheAOP));
 
             var basePath = Microsoft.DotNet.PlatformAbstractions.ApplicationEnvironment.ApplicationBasePath;//获取项目路径
             var servicesDllFile = Path.Combine(basePath, "Web.NetCore.Service.dll");//获取注入项目绝对路径
             var assemblysServices = Assembly.LoadFile(servicesDllFile);//直接采用加载文件的方法
             var repositoryDllFile = Path.Combine(basePath, "Web.NetCore.Repository.dll");//获取注入项目绝对路径
             var assemblysRepository = Assembly.LoadFile(repositoryDllFile);//直接采用加载文件的方法
+            builder.RegisterType<LogAOP>();
+            builder.RegisterType<CacheAOP>();
 
-            builder.RegisterAssemblyTypes(assemblysServices).AsImplementedInterfaces();//指定已扫描程序集中的类型注册为提供所有其实现的接口。
+            builder.RegisterAssemblyTypes(assemblysServices)
+                .AsImplementedInterfaces()
+                .InstancePerLifetimeScope()
+                .EnableInterfaceInterceptors()//引用Autofac.Extras.DynamicProxy;
+                .InterceptedBy(aop.ToArray());//指定已扫描程序集中的类型注册为提供所有其实现的接口。
             builder.RegisterAssemblyTypes(assemblysRepository).AsImplementedInterfaces();//指定已扫描程序集中的类型注册为提供所有其实现的接口。
 
             //将services填充到Autofac容器生成器中

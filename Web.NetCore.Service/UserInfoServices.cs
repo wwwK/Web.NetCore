@@ -14,5 +14,6 @@ namespace Web.NetCore.Service
             this.dal = dal;
             base.baseDal = dal;
         }
+
     }
 }
